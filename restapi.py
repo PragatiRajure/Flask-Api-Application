@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 from pymongo import MongoClient
-# from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
@@ -41,9 +40,7 @@ def create_user():
     response = {
         'Inserted document ID': str(result.inserted_id)
     }
-    # Validate and process the user data
     
-    # Return the created user data
     return jsonify(response)
 
 # Update the user with specified ID in the database
@@ -58,13 +55,9 @@ def update_user(id):
     }
     return jsonify(response)
 
-    # Validate and process the user data
-    # Return the updated user data
-
 # Delete the user with specific id from the database
 @app.route('/users/<id>', methods=['DELETE'])
 def delete_user(id):
-    # id = int(request.args.get("id"))
     result = collection.delete_one({"id": int(id)})
     if result.deleted_count == 1:
         response = {'message': 'User deleted successfully'}
