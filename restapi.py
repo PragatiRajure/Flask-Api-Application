@@ -1,15 +1,20 @@
 from flask import Flask, request, jsonify
 from pymongo import MongoClient
 
+#Create a new Flask application instance
+
 app = Flask(__name__)
+
+#Set the MongoDB URI and database name in the Flask application configuration
 
 app.config['MONGO_URI'] = 'mongodb://localhost:27017'
 app.config['MONGO_DBNAME'] = 'user'
 
+#Create a new PyMongo client and database instance
+
 mongo = MongoClient(app.config['MONGO_URI'])
 db = mongo[app.config['MONGO_DBNAME']]
 collection = db['users']
-
 
 # Get all users in the database
 @app.route('/users', methods=['GET'])
