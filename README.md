@@ -6,4 +6,3 @@
 3.Install Flask and PyMongo in terminal: pip install flask pymongo.
 
 4.Create a new  python file restapi.py.
-
